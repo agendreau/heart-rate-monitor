@@ -1,21 +1,28 @@
-# heart-rate-monitor
+# Heart Rate Monitor
+
+## Introduction 
+Create a program that can monitor your heart rate. Show your ``||gatorParticle: heart rate||`` on the micro:bit and have the ``||Neopixel: 5 LEDS||`` on the gator:bit blink according to their heart rate. After you think you've figured it out, ``|Download|`` the code and test it out. 
+
+```blocks
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(gatorParticle.heartbeat(HeartbeatType.BPM))
+})
+gatorParticle.begin()
+let strip = neopixel.create(DigitalPin.P12, 5, NeoPixelMode.RGB)
+basic.forever(function () {
+    strip.showColor(neopixel.colors(NeoPixelColors.Purple))
+    basic.pause(gatorParticle.heartbeat(HeartbeatType.BPM))
+    strip.clear()
+    strip.show()
+    basic.pause(gatorParticle.heartbeat(HeartbeatType.BPM))
+})
+```
+
+```package
+gatorParticle=github:sparkfun/pxt-gator-particle
+```
 
 
 
-## TODO
 
-- [ ] Add a reference for your blocks here
-- [ ] Add "icon.png" image (300x200) in the root folder
-- [ ] Add "- beta" to the GitHub project description if you are still iterating it.
-- [ ] Turn on your automated build on https://travis-ci.org
-- [ ] Use "pxt bump" to create a tagged release on GitHub
-- [ ] On GitHub, create a new file named LICENSE. Select the MIT License template.
-- [ ] Get your package reviewed and approved https://makecode.microbit.org/extensions/approval
-
-Read more at https://makecode.microbit.org/extensions
-
-## Supported targets
-
-* for PXT/microbit
-(The metadata above is needed for package search.)
 
